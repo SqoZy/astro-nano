@@ -1,0 +1,149 @@
+---
+---
+
+<div class="game-container">
+    <div id="game-instructions" class="instructions-overlay hidden">
+        <div class="instructions-content">
+            <h2>How to Play</h2>
+            <p>
+                This game is designed for mobile devices. To play on a PC, open the browser's developer tools (inspect the browser) and select a mobile screen size. 
+                Have fun!
+            </p>
+            <button onclick="closeInstructions()">OK</button>
+        </div>
+    </div>
+    <iframe
+        src="/games/3MatchGame/game/index.html"
+        class="responsive-iframe"></iframe>
+</div>
+
+<style>
+    :root {
+        --popup-bg: white;
+        --popup-text: black;
+        --popup-button-bg: #4CAF50;
+        --popup-button-text: white;
+    }
+
+    html.dark {
+        --popup-bg: #333;
+        --popup-text: white;
+        --popup-button-bg: #4CAF50;
+        --popup-button-text: white;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Ensure no scrollbars */
+    }
+
+    .game-container {
+        position: relative;
+        width: 100vw; /* Full viewport width */
+        height: 100vh; /* Full viewport height */
+        overflow: hidden; /* Ensure no scrollbars */
+    }
+
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10; /* Ensure the button is above the iframe */
+    }
+
+    .back-button-image {
+        width: 222px; /* Adjust the size as needed */
+        height: 108px; /* Adjust the size as needed */
+    }
+
+    .instructions-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20; /* Above the iframe */
+    }
+
+    .instructions-overlay.hidden {
+        display: none; /* Hide the popup initially */
+    }
+
+    .instructions-content {
+        background: var(--popup-bg);
+        color: var(--popup-text);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+    }
+
+    .instructions-content h2 {
+        margin-top: 0;
+    }
+
+    .instructions-content button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: var(--popup-button-bg);
+        color: var(--popup-button-text);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .responsive-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        z-index: 1;
+    }
+</style>
+
+<script>
+    // Ensure the dark mode class is applied on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        const userTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (userTheme === "dark" || (!userTheme && prefersDark)) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+
+        // Show the popup after determining the theme
+        const instructions = document.getElementById('game-instructions');
+        if (instructions) {
+            instructions.classList.remove('hidden');
+        }
+    });
+
+    declare global {
+        interface Window {
+            closeInstructions: () => void;
+        }
+    }
+
+    window.closeInstructions = function () {
+        const instructions = document.getElementById('game-instructions');
+        if (instructions) {
+            instructions.style.display = 'none';
+        }
+    };
+</script>

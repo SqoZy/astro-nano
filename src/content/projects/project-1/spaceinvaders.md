@@ -2,7 +2,7 @@
 title: "Space Invaders"
 description: "The first game i've ever build"
 date: "Nov 20 2023"
-demoURL: "https://astro-sphere-demo.vercel.app"
+demoURL: "/projects/games/space-invaders"
 repoURL: "https://github.com/SqoZy/SpaceInvaders"
 ---
 

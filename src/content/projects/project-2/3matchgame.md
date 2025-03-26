@@ -2,7 +2,7 @@
 title: "3 Match Game"
 description: "A game that i build in my first year of college."
 date: "Jan 28 2024"
-demoURL: "https://astro-sphere-demo.vercel.app"
+demoURL: "/projects/games/three-match-game"
 repoURL: "https://github.com/SqoZy/3MatchGame"
 ---
 
