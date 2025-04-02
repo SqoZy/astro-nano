@@ -15,3 +15,5 @@ date: "Apr 2 2025"
 4. I want to update my blog by writing about my experience trying to join a game jam.
 
 5. I want to change the appearance of the website by updating the header buttons and colors.
+
+6. I want to order the branches for my webiste by making a dev branch and deploy branch.
