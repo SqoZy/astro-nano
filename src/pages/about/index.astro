@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import { dateRange } from "@lib/utils";
+
+const collection = (await getCollection("about"))
+  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
+
+const aboutEntries = await Promise.all(
+  collection.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+---
+
+<PageLayout title="About Me" description="Learn more about my education and background.">
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        About Me
+      </div>
+      <ul class="flex flex-col space-y-4">
+        { 
+          aboutEntries.map(entry => (
+            <li class="animate">
+              <div class="text-sm opacity-75">
+                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+              </div>
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.school}
+              </div>
+              <div class="text-sm opacity-75">
+                {entry.data.study} - {entry.data.direction}
+              </div>
+              <article>
+                <entry.Content />
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</PageLayout>

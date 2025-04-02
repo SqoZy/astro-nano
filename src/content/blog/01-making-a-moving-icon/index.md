@@ -1,8 +1,17 @@
 ---
-title: "Moving icon"
-description: "How to make the moving home icon,"
-date: "Mar 25 2025"
+title: "Goals for Portfolio Build Jam"
+description: "Goals for the portfolio builders jam week 14"
+date: "Apr 2 2025"
 ---
 
-this is how i made the moving icon on my screen
+## Goals for Portfolio Build Jam
 
+1. I want to create an about page where you can see what study I am pursuing and find a bit of information about myself.
+
+2. I want to design an interactive logo that is a demon mask. I want to make it interactive by having the eyes follow the cursor.
+
+3. I want to add my other games to the project list. The shooter game has priority because it works, while the other ones will only have shortcuts to their repositories with screenshots since they don’t work very well.
+
+4. I want to update my blog by writing about my experience trying to join a game jam.
+
+5. I want to change the appearance of the website by updating the header buttons and colors.
