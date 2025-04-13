@@ -23,3 +23,6 @@ date: "Apr 2 2025"
 ### Reference: How the Site Looked Before
 
 ![Old Website Design](/oldwebsite.png)
+
+
+So i didnt make it, but i have time this week. So i will try to make these changes in the week of the 13 of april.
