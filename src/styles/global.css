@@ -7,7 +7,7 @@ html {
   color-scheme: light;
 }
 
-html.dark {
+html.dark { 
   color-scheme: dark;
 }
 
@@ -19,7 +19,7 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-stone-100 dark:bg-stone-900;
+  @apply bg-stone-100 dark:bg-[#1a1a1e]; /* Dark blue-gray, closer to black */
   @apply text-black/50 dark:text-white/75;
 }
 
