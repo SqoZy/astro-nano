@@ -6,20 +6,17 @@ import { SITE } from "@consts";
 
 <header>
   <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
+    <div class="flex flex-wrap gap-y-2 justify-between items-center">
+      <Link href="/">
         <div class="font-semibold">
           {SITE.NAME}
         </div>
       </Link>
       <nav class="flex gap-1 items-center">
-        <Link href="/about">about</Link>
-        <span>{`/`}</span>
-        <Link href="/blog">blog</Link>
-        <span>{`/`}</span>
-        <Link href="/work">work</Link>
-        <span>{`/`}</span>
-        <Link href="/projects">projects</Link>
+        <Link href="/about" class="hover-box">about</Link>
+        <Link href="/blog" class="hover-box">blog</Link>
+        <Link href="/work" class="hover-box">work</Link>
+        <Link href="/projects" class="hover-box">projects</Link>
         <button
           id="theme-toggle-button"
           aria-label="Toggle theme"

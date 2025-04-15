@@ -53,6 +53,14 @@ article {
     @apply text-black dark:text-white;
     @apply decoration-black/25 dark:decoration-white/50;
   }
+
+  .hover-box {
+    @apply relative px-2 py-1 rounded transition-all duration-300 ease-in-out;
+  }
+
+  .hover-box:hover {
+    @apply bg-gray-200 dark:bg-gray-700 shadow-md;
+  }
 }
 
 .animate {
