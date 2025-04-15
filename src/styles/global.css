@@ -79,3 +79,38 @@ html #back-to-top {
 html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
 }
+
+/* Logo container styles */
+.logo-container {
+  position: relative;
+  width: 100px; /* Adjust based on your mask size */
+  height: 70px; /* Adjust based on your mask size */
+  margin: 0 auto;
+}
+
+/* Mask styles */
+.mask {
+  /* position: relative; */
+  width: 50%;
+  height: 114%;
+  display: block;
+}
+
+/* Flame styles */
+.flame {
+  position: absolute;
+  width: 30px; /* Adjust based on flame size */
+  height: 30px; /* Adjust based on flame size */
+  pointer-events: none; /* Prevent flames from interfering with mouse events */
+  transition: transform 0.1s ease-out;
+}
+
+.flame-left {
+  top: 45px; /* Adjust to position over the left eye */
+  left: 10px; /* Adjust to position over the left eye */
+}
+
+.flame-right {
+  top: 45px; /* Adjust to position over the right eye */
+  left: 36px; /* Adjust to position over the right eye */
+}
