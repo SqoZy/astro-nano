@@ -8,7 +8,7 @@ date: "Apr 2 2025"
 
 1. ✅ I want to create an about page where you can see what study I am pursuing and find a bit of information about myself.
 
-2. I want to design an interactive logo that is a demon mask. I want to make it interactive by having the eyes follow the cursor.
+2. ✅ I want to design an interactive logo that is a demon mask. I want to make it interactive by having the eyes follow the cursor.
 
 3. I want to add my other games to the project list. The shooter game has priority because it works, while the other ones will only have shortcuts to their repositories with screenshots since they don’t work very well.
 
