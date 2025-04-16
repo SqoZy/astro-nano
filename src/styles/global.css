@@ -90,7 +90,7 @@ html.scrolled #back-to-top {
 
 /* Mask styles */
 .mask {
-  /* position: relative; */
+  position: relative;
   width: 50%;
   height: 114%;
   display: block;
@@ -99,18 +99,18 @@ html.scrolled #back-to-top {
 /* Flame styles */
 .flame {
   position: absolute;
-  width: 30px; /* Adjust based on flame size */
-  height: 30px; /* Adjust based on flame size */
+  width: 20px; /* Adjust based on flame size */
+  height: 20px; /* Adjust based on flame size */
   pointer-events: none; /* Prevent flames from interfering with mouse events */
   transition: transform 0.1s ease-out;
 }
 
 .flame-left {
-  top: 45px; /* Adjust to position over the left eye */
-  left: 10px; /* Adjust to position over the left eye */
+  top: 31px; /* Adjust to position over the left eye */
+  left: 7px; /* Adjust to position over the left eye */
 }
 
 .flame-right {
-  top: 45px; /* Adjust to position over the right eye */
-  left: 36px; /* Adjust to position over the right eye */
+  top: 31px; /* Adjust to position over the right eye */
+  left: 23px; /* Adjust to position over the right eye */
 }
