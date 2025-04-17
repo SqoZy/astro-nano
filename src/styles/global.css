@@ -7,7 +7,7 @@ html {
   color-scheme: light;
 }
 
-html.dark {
+html.dark { 
   color-scheme: dark;
 }
 
@@ -19,7 +19,7 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-stone-100 dark:bg-stone-900;
+  @apply bg-stone-100 dark:bg-[#1a1a1e]; /* Dark blue-gray, closer to black */
   @apply text-black/50 dark:text-white/75;
 }
 
@@ -53,6 +53,14 @@ article {
     @apply text-black dark:text-white;
     @apply decoration-black/25 dark:decoration-white/50;
   }
+
+  .hover-box {
+    @apply relative px-2 py-1 rounded transition-all duration-300 ease-in-out;
+  }
+
+  .hover-box:hover {
+    @apply bg-gray-200 dark:bg-gray-700 shadow-md;
+  }
 }
 
 .animate {
@@ -70,4 +78,42 @@ html #back-to-top {
 
 html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
+}
+
+/* Logo container styles */
+.logo-container {
+  position: relative;
+  margin-left: 0; /* Remove any left margin */
+  padding-left: 0; /* Remove any left padding */
+  display: flex;
+  align-items: center;
+  width: 100px; /* Adjust based on your logo size */
+  height: 70px; /* Adjust based on your logo size */
+}
+
+/* Mask styles */
+.mask {
+  position: relative;
+  width: 50%;
+  height: 114%;
+  display: block;
+}
+
+/* Flame styles */
+.flame {
+  position: absolute;
+  width: 20px; /* Adjust based on flame size */
+  height: 20px; /* Adjust based on flame size */
+  pointer-events: none; /* Prevent flames from interfering with mouse events */
+  transition: transform 0.1s ease-out;
+}
+
+.flame-left {
+  top: 27px; /* Adjust to position over the left eye */
+  left: 7px; /* Adjust to position over the left eye */
+}
+
+.flame-right {
+  top: 27px; /* Adjust to position over the right eye */
+  left: 23px; /* Adjust to position over the right eye */
 }

@@ -6,20 +6,17 @@ import { SITE } from "@consts";
 
 <header>
   <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
-        <div class="font-semibold">
-          {SITE.NAME}
-        </div>
+    <div class="flex flex-wrap gap-y-2 justify-start items-center">
+      <Link href="/" class="logo-container">
+        <img src="/flame.gif" alt="Flame Left" class="flame flame-left" />
+        <img src="/flame.gif" alt="Flame Right" class="flame flame-right" />
+        <img src="/mask.png" alt="Mask" class="mask" />
       </Link>
-      <nav class="flex gap-1 items-center">
-        <Link href="/about">about</Link>
-        <span>{`/`}</span>
-        <Link href="/blog">blog</Link>
-        <span>{`/`}</span>
-        <Link href="/work">work</Link>
-        <span>{`/`}</span>
-        <Link href="/projects">projects</Link>
+      <nav class="flex gap-1 items-center ml-auto">
+        <Link href="/about" class="hover-box">about</Link>
+        <Link href="/blog" class="hover-box">blog</Link>
+        <Link href="/work" class="hover-box">work</Link>
+        <Link href="/projects" class="hover-box">projects</Link>
         <button
           id="theme-toggle-button"
           aria-label="Toggle theme"

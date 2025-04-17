@@ -21,6 +21,41 @@ const aboutEntries = await Promise.all(
       <div class="animate font-semibold text-black dark:text-white">
         About Me
       </div>
+      <div class="animate flex items-center space-x-4">
+        <img 
+          src="/ProfileP.jpg" 
+          alt="Picture of Jordy" 
+          class="w-24 h-24 rounded-full border-2 border-gray-300 dark:border-gray-700"
+        />
+        <h1 class="text font-bold text-black dark:text-white">
+          Hi, I'm Jordy!
+        </h1>
+      </div>
+      <hr class="border-t border-gray-300 dark:border-gray-700" />
+      <div class="animate space-y-4">
+        <p>
+          I am a student at Amsterdam's University of Applied Sciences studying computer science with the direction of game development. 
+          I have made a few games you can play on my website or on my 
+          <a href="https://itch.io" target="_blank" class="text-blue-500 underline">itch.io</a> page. Most of my games are made with C#, 
+          but I have also made a few games with JavaScript using the P5 library and I'm currently making a game inside LOVE using Lua.
+        </p>
+        <div class="flex items-center space-x-4">
+          <p>
+            I am a car enthusiast and I love to play racing games. I am also a terrarium enthusiast and have made a few terrariums for my poison dart frogs. 
+            Currently trying to let them breed so I can use my smaller terrariums for the offspring. 
+            For some updates on the progress of my terrarium builds or breeding progress you can check out my blog posts.
+          </p>
+          <img 
+            src="/dartfrog.jpg" 
+            alt="Picture of my dart frog" 
+            class="w-48 h-48 object-cover rounded-lg border-2 border-gray-300 dark:border-gray-700"
+          />
+        </div>
+      </div>
+      <hr class="border-t border-gray-300 dark:border-gray-700" />
+      <div class="animate font-semibold text-black dark:text-white">
+        Studies
+      </div>
       <ul class="flex flex-col space-y-4">
         { 
           aboutEntries.map(entry => (
