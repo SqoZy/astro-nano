@@ -66,9 +66,11 @@ document.addEventListener("mousemove", (event) => {
   const flameRight = document.querySelector(".flame-right");
 
   // Get the bounding box of the logo container
-  const rect = logoContainer.getBoundingClientRect();
+  const rect = logoContainer?.getBoundingClientRect();
 
   // Calculate the mouse position relative to the logo container
+  if (!rect) return;
+
   const mouseX = event.clientX - rect.left;
   const mouseY = event.clientY - rect.top;
 
@@ -76,7 +78,8 @@ document.addEventListener("mousemove", (event) => {
   const maxMovement = 3;
 
   // Function to calculate the movement for each eye
-  function calculateEyeMovement(eyeX, eyeY) {
+  function calculateEyeMovement(eyeX: number, eyeY: number) {
+    if (!rect) return;
     const normalizedX = ((mouseX - eyeX) / rect.width) * 2;
     const normalizedY = ((mouseY - eyeY) / rect.height) * 2;
 
@@ -90,8 +93,10 @@ document.addEventListener("mousemove", (event) => {
   }
 
   // Get the positions of the left and right flames
-  const flameLeftRect = flameLeft.getBoundingClientRect();
-  const flameRightRect = flameRight.getBoundingClientRect();
+  const flameLeftRect = flameLeft?.getBoundingClientRect();
+  const flameRightRect = flameRight?.getBoundingClientRect();
+
+  if (!flameLeftRect || !flameRightRect) return;
 
   // Calculate movement for the left eye
   const leftEyeMovement = calculateEyeMovement(
@@ -105,8 +110,14 @@ document.addEventListener("mousemove", (event) => {
     flameRightRect.top + flameRightRect.height / 2 - rect.top
   );
 
+
+
   // Apply the calculated positions to the flames
-  flameLeft.style.transform = `translate(${leftEyeMovement.offsetX}px, ${leftEyeMovement.offsetY}px)`;
-  flameRight.style.transform = `translate(${rightEyeMovement.offsetX}px, ${rightEyeMovement.offsetY}px)`;
+  if (flameLeft && leftEyeMovement) {
+    (flameLeft as HTMLElement).style.transform = `translate(${leftEyeMovement.offsetX}px, ${leftEyeMovement.offsetY}px)`;
+  }
+  if (flameRight && rightEyeMovement) {
+    (flameRight as HTMLElement).style.transform = `translate(${rightEyeMovement.offsetX}px, ${rightEyeMovement.offsetY}px)`;
+  }
 });
 </script>
