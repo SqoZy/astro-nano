@@ -6,7 +6,7 @@ demoURL: "/projects/games/space-invaders"
 repoURL: "https://github.com/SqoZy/SpaceInvaders"
 ---
 
-![Space Invaders](/spaceinvaders.png)
+![Space Invaders](/images/spaceinvaders.png)
 
 The goal was to make a Space Invader clone with a twist. my twist was a big boss with a lot of hp and a special attack.
 

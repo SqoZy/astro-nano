@@ -6,7 +6,7 @@ demoURL: "/projects/games/three-match-game"
 repoURL: "https://github.com/SqoZy/3MatchGame"
 ---
 
-![3 Match Game](/3matchgame.png)
+![3 Match Game](/images/3matchgame.png)
 
 The objective of the game is to match three or more tiles of the same type to score points. The game features various levels with increasing difficulty and special tiles that add unique gameplay mechanics.
 
