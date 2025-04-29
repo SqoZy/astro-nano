@@ -5,4 +5,4 @@ dateStart: "05/11/2022"
 dateEnd: "07/20/2023"
 ---
 
-Just self stacking for a year.
+Just stacked shelves for a year.
