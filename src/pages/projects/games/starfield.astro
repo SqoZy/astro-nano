@@ -1,0 +1,36 @@
+---
+---
+
+<div class="game-container">
+    <iframe
+        src="/games/StarField/index.html"
+        class="responsive-iframe"
+    ></iframe>
+</div>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Prevent scrollbars */
+        background-color: black; /* Set the background to black */
+    }
+
+    .game-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw; /* Full viewport width */
+        height: 100vh; /* Full viewport height */
+        background-color: black; /* Set the background to black */
+        overflow: hidden; /* Prevent scrollbars inside the container */
+    }
+
+    .responsive-iframe {
+        width: 100%; /* Default to full width */
+        height: 100%; /* Default to full height */
+        border: 0; /* Remove iframe border */
+    }
+</style>
