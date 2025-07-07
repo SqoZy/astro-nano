@@ -7,6 +7,8 @@ demoURL: "/projects/games/starfield"
 
 ![StarField](/images/starfield.png)
 
+You can play the game by clicking the **Demo** link above.
+
 [Watch the Coding Train Starfield video](https://www.youtube.com/watch?v=17WoOqgXsRM&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=1)
 
 I made this starfield after watching a video by The Coding Train. He created a basic star system in 10 minutes, and I managed to build mine in about half an hour. 
