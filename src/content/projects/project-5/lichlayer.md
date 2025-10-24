@@ -3,7 +3,7 @@ title: "Lich Layer"
 description: "An FPS boss fight I created in Unity"
 date: "Jan 10 2025"
 demoURL: "https://sqozy.itch.io/lichs-lair"
-repoURL: "https://github.com/SqoZy/3MatchGame"
+repoURL: "https://github.com/SqoZy/The-Lich-Layer"
 ---
 
 ![Lich Layer](/images/lichlayer.png)
