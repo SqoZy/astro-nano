@@ -1,3 +1,15 @@
 [submodule "public/games/Mamba"]
 	path = public/games/Mamba
 	url = https://github.com/SqoZy/Mamba
+[submodule "public/games/SpaceInvaders"]
+	path = public/games/SpaceInvaders
+	url = https://github.com/SqoZy/SpaceInvaders
+[submodule "public/games/Snake"]
+	path = public/games/Snake
+	url = https://github.com/SqoZy/Snake
+[submodule "public/games/Starfield"]
+	path = public/games/Starfield
+	url = https://github.com/SqoZy/Starfield
+[submodule "public/games/3MatchGame"]
+	path = public/games/3MatchGame
+	url = https://github.com/SqoZy/3MatchGame
