@@ -8,7 +8,7 @@ import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
 import inter600 from "@fontsource/inter/files/inter-latin-600-normal.woff2";
 import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2";
 import lora600 from "@fontsource/lora/files/lora-latin-600-normal.woff2";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -24,15 +24,25 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/icons/eye.svg" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/svg+xml" href="/icons/eye.svg" media="(prefers-color-scheme: light)">
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/icons/eye.svg"
+  media="(prefers-color-scheme: dark)"
+/>
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/icons/eye.svg"
+  media="(prefers-color-scheme: light)"
+/>
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -56,16 +66,16 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<ViewTransitions  />
+<ClientRouter />
 
 <script>
   import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
   document.addEventListener("astro:before-swap", (e) =>
     [
       ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll(
-        "link[as=\"font\"]"
+        'link[as="font"]',
       ),
-    ].forEach((link) => link.remove())
+    ].forEach((link) => link.remove()),
   );
 </script>
 
@@ -87,7 +97,12 @@ const { title, description, image = "/nano.png" } = Astro.props;
       // Toggle theme on button click
       themeToggleButton.addEventListener("click", () => {
         const currentTheme = localStorage.getItem("theme") || "system";
-        const newTheme = currentTheme === "light" ? "dark" : currentTheme === "dark" ? "light" : "dark";
+        const newTheme =
+          currentTheme === "light"
+            ? "dark"
+            : currentTheme === "dark"
+              ? "light"
+              : "dark";
         applyTheme(newTheme);
       });
     }
@@ -98,11 +113,13 @@ const { title, description, image = "/nano.png" } = Astro.props;
     const backToPrev = document.getElementById("back-to-prev");
     backToPrev?.addEventListener("click", () => window.history.back());
 
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-      if (localStorage.getItem("theme") === "system") {
-        toggleTheme(event.matches);
-      }
-    });
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+        if (localStorage.getItem("theme") === "system") {
+          toggleTheme(event.matches);
+        }
+      });
 
     document.addEventListener("scroll", onScroll);
   }
@@ -121,7 +138,10 @@ const { title, description, image = "/nano.png" } = Astro.props;
     const darkIcon = document.querySelector(".dark-icon");
 
     if (lightIcon && darkIcon) {
-      const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const isDark =
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
       lightIcon.classList.toggle("hidden", isDark);
       darkIcon.classList.toggle("hidden", !isDark);
     }
@@ -143,7 +163,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
              transition: none !important;
           }
         `,
-      )
+      ),
     );
 
     document.head.appendChild(css);
