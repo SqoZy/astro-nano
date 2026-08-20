@@ -96,7 +96,7 @@ import { SITE } from "@consts";
     return localStorage.getItem("wispSpawned") === "true";
   }
 
-  function setWispImage(src: string) {
+  async function setWispImage(src: string) {
     const logoImage = document.getElementById(
       "logo-image",
     ) as HTMLImageElement | null;
@@ -105,12 +105,18 @@ import { SITE } from "@consts";
     }
 
     const nextLogoImage = logoImage.cloneNode(false) as HTMLImageElement;
-    const imageLoaded = new Promise<void>((resolve) => {
-      nextLogoImage.addEventListener("load", () => resolve(), { once: true });
-    });
-    nextLogoImage.src = `${src}?animation=${Date.now()}`;
+    nextLogoImage.src = src;
+
+    if (!nextLogoImage.complete) {
+      await new Promise<void>((resolve) => {
+        nextLogoImage.addEventListener("load", () => resolve(), { once: true });
+        nextLogoImage.addEventListener("error", () => resolve(), {
+          once: true,
+        });
+      });
+    }
+
     logoImage.replaceWith(nextLogoImage);
-    return imageLoaded;
   }
 
   async function playWispAnimation(src: string, duration: number) {
@@ -120,7 +126,7 @@ import { SITE } from "@consts";
 
   async function spawnWisp(index: number) {
     await playWispAnimation(wispSpawn[index], wispSpawnAnimationDuration);
-    setWispImage(wispsIdle[index]);
+    await setWispImage(wispsIdle[index]);
     localStorage.setItem("wispSpawned", "true");
     wispChangeInProgress = false;
   }
