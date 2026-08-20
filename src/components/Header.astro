@@ -7,11 +7,20 @@ import { SITE } from "@consts";
 <header>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-start items-center">
-      <Link href="/" class="logo-container">
-        <img src="/icons/flame.gif" alt="Flame Left" class="flame flame-left" />
-        <img src="/icons/flame.gif" alt="Flame Right" class="flame flame-right" />
-        <img src="/icons/mask.png" alt="Mask" class="mask" />
-      </Link>
+      <a
+        href="/"
+        id="logo-button"
+        class="logo-button"
+        aria-label="Home - Click to cycle wisp"
+      >
+        <img
+          id="logo-image"
+          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+          alt="Wisp logo"
+          class="logo-image"
+        />
+      </a>
+
       <nav class="flex gap-1 items-center ml-auto">
         <Link href="/about" class="hover-box">about</Link>
         <Link href="/blog" class="hover-box">blog</Link>
@@ -50,8 +59,7 @@ import { SITE } from "@consts";
             <!-- Dark Theme Icon -->
             <path
               d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-              class="dark-icon hidden"
-            ></path>
+              class="dark-icon hidden"></path>
           </svg>
         </button>
       </nav>
@@ -60,64 +68,118 @@ import { SITE } from "@consts";
 </header>
 
 <script>
-document.addEventListener("mousemove", (event) => {
-  const logoContainer = document.querySelector(".logo-container");
-  const flameLeft = document.querySelector(".flame-left");
-  const flameRight = document.querySelector(".flame-right");
+  const wispsIdle = [
+    "/icons/idle/Poison_wisp_idle.gif",
+    "/icons/idle/Poison_wisp_purple_idle.gif",
+    "/icons/idle/Poison_wisp_red_idle.gif",
+  ];
+  const wispsDie = [
+    "/icons/die/Poison_wisp_die.gif",
+    "/icons/die/Poison_wisp_purple_die.gif",
+    "/icons/die/Poison_wisp_red_die.gif",
+  ];
+  const wispSpawn = [
+    "/icons/spawn/Poison_wisp_spawn.gif",
+    "/icons/spawn/Poison_wisp_purple_spawn.gif",
+    "/icons/spawn/Poison_wisp_red_spawn.gif",
+  ];
+  const wispDieAnimationDuration = 900;
+  const wispSpawnAnimationDuration = 800;
+  let wispChangeInProgress = false;
 
-  // Get the bounding box of the logo container
-  const rect = logoContainer?.getBoundingClientRect();
-
-  // Calculate the mouse position relative to the logo container
-  if (!rect) return;
-
-  const mouseX = event.clientX - rect.left;
-  const mouseY = event.clientY - rect.top;
-
-  // Limit the movement to a maximum of 5 pixels for subtle movement
-  const maxMovement = 3;
-
-  // Function to calculate the movement for each eye
-  function calculateEyeMovement(eyeX: number, eyeY: number) {
-    if (!rect) return;
-    const normalizedX = ((mouseX - eyeX) / rect.width) * 2;
-    const normalizedY = ((mouseY - eyeY) / rect.height) * 2;
-
-    const clampedX = Math.max(-1, Math.min(1, normalizedX));
-    const clampedY = Math.max(-1, Math.min(1, normalizedY));
-
-    const offsetX = clampedX * maxMovement;
-    const offsetY = clampedY * maxMovement;
-
-    return { offsetX, offsetY };
+  function getStoredWisp() {
+    const saved = Number(localStorage.getItem("wisp") ?? "0");
+    return Number.isInteger(saved) && saved >= 0 ? saved : 0;
   }
 
-  // Get the positions of the left and right flames
-  const flameLeftRect = flameLeft?.getBoundingClientRect();
-  const flameRightRect = flameRight?.getBoundingClientRect();
-
-  if (!flameLeftRect || !flameRightRect) return;
-
-  // Calculate movement for the left eye
-  const leftEyeMovement = calculateEyeMovement(
-    flameLeftRect.left + flameLeftRect.width / 2 - rect.left,
-    flameLeftRect.top + flameLeftRect.height / 2 - rect.top
-  );
-
-  // Calculate movement for the right eye
-  const rightEyeMovement = calculateEyeMovement(
-    flameRightRect.left + flameRightRect.width / 2 - rect.left,
-    flameRightRect.top + flameRightRect.height / 2 - rect.top
-  );
-
-
-
-  // Apply the calculated positions to the flames
-  if (flameLeft && leftEyeMovement) {
-    (flameLeft as HTMLElement).style.transform = `translate(${leftEyeMovement.offsetX}px, ${leftEyeMovement.offsetY}px)`;
+  function hasWispSpawned() {
+    return localStorage.getItem("wispSpawned") === "true";
   }
-  if (flameRight && rightEyeMovement) {
-    (flameRight as HTMLElement).style.transform = `translate(${rightEyeMovement.offsetX}px, ${rightEyeMovement.offsetY}px)`;
+
+  function setWispImage(src: string) {
+    const logoImage = document.getElementById(
+      "logo-image",
+    ) as HTMLImageElement | null;
+    if (!logoImage) {
+      return Promise.resolve();
+    }
+
+    const nextLogoImage = logoImage.cloneNode(false) as HTMLImageElement;
+    const imageLoaded = new Promise<void>((resolve) => {
+      nextLogoImage.addEventListener("load", () => resolve(), { once: true });
+    });
+    nextLogoImage.src = `${src}?animation=${Date.now()}`;
+    logoImage.replaceWith(nextLogoImage);
+    return imageLoaded;
   }
-});
+
+  async function playWispAnimation(src: string, duration: number) {
+    await setWispImage(src);
+    await new Promise((resolve) => setTimeout(resolve, duration));
+  }
+
+  async function spawnWisp(index: number) {
+    await playWispAnimation(wispSpawn[index], wispSpawnAnimationDuration);
+    setWispImage(wispsIdle[index]);
+    localStorage.setItem("wispSpawned", "true");
+    wispChangeInProgress = false;
+  }
+
+  async function cycleWisp(event: MouseEvent) {
+    event.preventDefault();
+    if (wispChangeInProgress) return;
+
+    wispChangeInProgress = true;
+    const current = getStoredWisp() % wispsIdle.length;
+    const next =
+      wispsIdle.length > 1
+        ? (current + 1 + Math.floor(Math.random() * (wispsIdle.length - 1))) %
+          wispsIdle.length
+        : current;
+
+    localStorage.setItem("wispSpawned", "false");
+    await playWispAnimation(wispsDie[current], wispDieAnimationDuration);
+
+    localStorage.setItem("wisp", String(next));
+    if (window.location.pathname === "/") {
+      await spawnWisp(next);
+    } else {
+      wispChangeInProgress = false;
+      window.location.href = "/";
+    }
+  }
+
+  function initLogo() {
+    const logoImage = document.getElementById(
+      "logo-image",
+    ) as HTMLImageElement | null;
+    if (!logoImage) {
+      return;
+    }
+    const index = getStoredWisp() % wispsIdle.length;
+    console.log("Current wisp index:", index);
+
+    if (!hasWispSpawned() && !wispChangeInProgress) {
+      console.log("Spawning wisp for the first time");
+      wispChangeInProgress = true;
+      spawnWisp(index);
+    } else if (hasWispSpawned()) {
+      logoImage.src = wispsIdle[index];
+    }
+
+    const logoButton = document.getElementById("logo-button");
+    if (logoButton) {
+      logoButton.onclick = cycleWisp;
+    }
+  }
+
+  // Initialize on page load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLogo);
+  } else {
+    initLogo();
+  }
+
+  // Re-initialize on Astro route transitions
+  document.addEventListener("astro:page-load", initLogo);
 </script>
