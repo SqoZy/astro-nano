@@ -3,10 +3,12 @@ title: "Lich Layer"
 description: "An FPS boss fight I created in Unity"
 date: "Jan 10 2025"
 demoURL: "https://sqozy.itch.io/lichs-lair"
-repoURL: "https://github.com/SqoZy/3MatchGame"
+repoURL: "https://github.com/SqoZy/The-Lich-Layer"
 ---
 
 ![Lich Layer](/images/lichlayer.png)
+
+You can play the game by clicking the **Demo** link above.
 
 This game was developed by a group of four, and we had around four months to complete it. The theme of the game was a boss fight, featuring an end boss that spawns minions. Before reaching the boss, players first go through a tutorial phase where they learn to fight the minions. After completing the tutorial phase, players enter a large arena containing the boss. 
 
