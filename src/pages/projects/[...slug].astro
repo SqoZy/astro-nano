@@ -42,16 +42,15 @@ const { Content } = await render(project);
       </div>
       {
         (project.data.demoURL || project.data.repoURL) && (
-          <nav class="animate flex gap-1">
+          <nav class="animate flex flex-wrap gap-2 pt-2" aria-label="Project links">
             {project.data.demoURL && (
-              <Link href={project.data.demoURL} external>
-                demo
+              <Link href={project.data.demoURL} external class="project-cta project-cta-primary">
+                Demo
               </Link>
             )}
-            {project.data.demoURL && project.data.repoURL && <span>/</span>}
             {project.data.repoURL && (
-              <Link href={project.data.repoURL} external>
-                repo
+              <Link href={project.data.repoURL} external class="project-cta project-cta-secondary">
+                Repo
               </Link>
             )}
           </nav>

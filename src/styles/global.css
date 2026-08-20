@@ -104,3 +104,26 @@ html.scrolled #back-to-top {
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
+
+.project-cta {
+  @apply inline-flex items-center justify-center rounded-md border px-3 py-1.5;
+  @apply text-sm font-medium leading-none no-underline;
+  @apply transition-colors duration-200 ease-in-out;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  @apply focus-visible:ring-black/40 focus-visible:ring-offset-stone-100;
+  @apply dark:focus-visible:ring-white/50 dark:focus-visible:ring-offset-[#1a1a1e];
+}
+
+.project-cta-primary {
+  @apply border-black/80 bg-black text-stone-100;
+  @apply hover:border-black hover:bg-stone-800 hover:text-white;
+  @apply dark:border-white/85 dark:bg-white dark:text-stone-900;
+  @apply dark:hover:bg-stone-200 dark:hover:text-black;
+}
+
+.project-cta-secondary {
+  @apply border-black/20 bg-transparent text-black/80;
+  @apply hover:border-black/40 hover:bg-black/5 hover:text-black;
+  @apply dark:border-white/25 dark:text-white/85;
+  @apply dark:hover:border-white/45 dark:hover:bg-white/10 dark:hover:text-white;
+}
