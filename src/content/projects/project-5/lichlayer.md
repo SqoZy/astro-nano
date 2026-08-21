@@ -8,8 +8,6 @@ repoURL: "https://github.com/SqoZy/The-Lich-Layer"
 
 ![Lich Layer](/images/lichlayer.png)
 
-You can play the game by clicking the **Demo** link above.
-
 This game was developed by a group of four, and we had around four months to complete it. The theme of the game was a boss fight, featuring an end boss that spawns minions. Before reaching the boss, players first go through a tutorial phase where they learn to fight the minions. After completing the tutorial phase, players enter a large arena containing the boss. 
 
 The boss had two main attacks: shooting orbs and throwing rocks. If an orb hits the player, it deals damage, but if it hits the ground, it spawns a minion (either a zombie or an archer). After attacking with a few orbs, the boss throws a large rock at the player. If the rock hits the player, it results in instant death. However, if it hits the ground, it creates a shockwave that the player must jump over to avoid damage. If the rock hits a pillar, the pillar is destroyed and drops health and ammo. After a short time, the pillar reappears and creates a danger zone around itself that damages the player if they stand on it.
